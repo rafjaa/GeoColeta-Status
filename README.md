@@ -9,7 +9,7 @@ __Coordenador:__ <a href="http://lattes.cnpq.br/3995585094514614" target="_blank
 
 <p align="center">
     <br />
-    <img src="https://raw.githubusercontent.com/rafjaa/geocoleta.status/master/samples/telas_geocoleta_status.jpg" alt="Telas do app" />
+    <img src="https://raw.githubusercontent.com/rafjaa/GeoColeta-Status/master/samples/telas_geocoleta_status.jpg" alt="Telas do app" />
     <br />
     <em>Telas do app em execução</em>
 </p>
