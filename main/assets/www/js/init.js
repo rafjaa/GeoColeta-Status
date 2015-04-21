@@ -2,7 +2,7 @@ var update_callback = null;
 
 var grafico = null;
 var renderizado = false;
-var valores_grafico = [0, 0, 0, 0, 0];
+var valores_grafico = {'papel': 0, 'plastico': 0, 'metal_vidro': 0, 'organico': 0, 'nao_reciclavel': 0};
 
 (function($){
     $(function(){
@@ -44,11 +44,11 @@ var valores_grafico = [0, 0, 0, 0, 0];
                     type: 'pie',
                     name: 'Total de descartes',
                     data: [
-                        ['Papel', valores_grafico[0]],
-                        ['Plástico', valores_grafico[1]],
-                        ['Metal/Vidro', valores_grafico[2]],
-                        ['Orgânico', valores_grafico[3]],
-                        ['Não-reciclável', valores_grafico[4]]
+                        ['Papel', valores_grafico['papel']],
+                        ['Plástico', valores_grafico['plastico']],
+                        ['Metal/Vidro', valores_grafico['metal_vidro']],
+                        ['Orgânico', valores_grafico['organico']],
+                        ['Não-reciclável', valores_grafico['nao_reciclavel']]
                     ]
                 }],
                 legend: {
@@ -92,11 +92,8 @@ var valores_grafico = [0, 0, 0, 0, 0];
             $('#var_coletores').text(total_coletores);
             $('#var_descartes').text(total_descartes);
 
-            // Atualiza os valores do gráfico
-            valores_grafico = [];
-
             for(var k in data){
-                valores_grafico.push(data[k]['descartes'] * 100 / total_descartes);
+                valores_grafico[k] = data[k]['descartes'] * 100 / total_descartes;
             }
             renderizado = false;
         }
