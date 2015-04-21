@@ -1,0 +1,41 @@
+*{
+    /* Evita a cor azul de seleção do navegador quado um item é clicado */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Aba destacada */
+.tabs li.tab a:hover{
+    color: #43a047;
+}
+.tabs .indicator{
+    background-color: #43a047;
+}
+
+/* Espaço lateral do container */
+.container {
+    width: 95%;
+}
+
+span.badge.new:after {
+    content: "";
+}
+
+.collection, .collection .collection-item{
+    border: none;
+}
+
+.collection{
+    margin-bottom: 0px;
+}
+
+small{
+    margin-left: 5px;
+}
+
+li a i{
+    color: #43a047;
+}
+
+#loading{
+    margin-top: 10px;
+}

@@ -1,0 +1,138 @@
+var update_callback = null;
+
+var grafico = null;
+var renderizado = false;
+var valores_grafico = [0, 0, 0, 0, 0];
+
+(function($){
+    $(function(){
+
+        // Oculta a barra de atualização
+        $('#loading').hide();
+
+        grafico = function(){
+
+            if(renderizado){
+                return;
+            }
+            renderizado = true;
+
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                colors: ['#2196f3', '#f44336', '#4caf50', '#795548', '#9e9e9e'],
+                title: {
+                    text: false
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Total de descartes',
+                    data: [
+                        ['Papel', valores_grafico[0]],
+                        ['Plástico', valores_grafico[1]],
+                        ['Metal/Vidro', valores_grafico[2]],
+                        ['Orgânico', valores_grafico[3]],
+                        ['Não-reciclável', valores_grafico[4]]
+                    ]
+                }],
+                legend: {
+                    backgroundColor: '#eee',
+                    borderRadius: 4,
+                    itemMarginTop: 5,
+                    itemMarginBottom: 5,
+                    itemStyle: {"fontSize": "12px", "fontWeight": "normal"}
+                },
+                credits: {
+                    enabled: false
+                }
+            });
+        }
+
+        update = function(){
+            // Exibe a barra de carregamento
+            $('#loading').fadeIn();
+
+            // Oculta o ícone de carregar
+            $('#update').fadeOut();
+
+            Android.update();
+        }
+
+        load_data = function(){
+
+            data = JSON.parse(localStorage['json_data']);
+
+            var total_coletores = 0;
+            var total_descartes = 0.0;
+
+            for(var k in data){
+                total_coletores += data[k]['coletores'];
+                total_descartes += data[k]['descartes'];
+
+                $('#var_' + k + '_coletores').text(data[k]['coletores']);
+                $('#var_' + k + '_descartes').text(data[k]['descartes']);
+            }
+
+            $('#var_coletores').text(total_coletores);
+            $('#var_descartes').text(total_descartes);
+
+            // Atualiza os valores do gráfico
+            valores_grafico = [];
+
+            for(var k in data){
+                valores_grafico.push(data[k]['descartes'] * 100 / total_descartes);
+            }
+            renderizado = false;
+        }
+
+        $("#update").click(function(){
+            update();
+        });
+
+
+        // Se não houver dados, força atualização
+        if(!localStorage['json_data']){
+            update();
+        } else{
+            load_data();
+        }
+
+
+        update_callback = function(data){
+
+            // Checa se foi possível obter os dados
+            if(!data){
+                return;
+            }
+
+            // Atualiza o BD
+            localStorage['json_data'] = JSON.stringify(data);
+
+            // Atualiza as informações
+            load_data();
+
+            // Retorna com o ícone de carregar
+            $('#update').fadeIn();
+
+            // Oculta a barra de carregamento
+            $('#loading').fadeOut();
+        }
+
+    });
+})(jQuery);
