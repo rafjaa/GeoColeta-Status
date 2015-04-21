@@ -2,7 +2,7 @@
 
 Aplicativo Android que consome o web service do sistema de informações geográficas ambientais GeoColeta, exibindo estatísticas sobre o processo de coleta seletiva no  Instituto Federal do Sudeste de Minas Gerais, Câmpus Barbacena.
 
-__Projeto GeoColeta:__ http://www.barbacena.ifsudestemg.edu.br/conteudo/geocoleta
+__Projeto GeoColeta:__ <a href="http://www.barbacena.ifsudestemg.edu.br/conteudo/geocoleta" target="_blank">http://www.barbacena.ifsudestemg.edu.br/conteudo/geocoleta</a>
 
 __Coordenador:__ <a href="http://lattes.cnpq.br/3995585094514614" target="_blank">Prof. Rafael José de Alencar Almeida</a>
 
