@@ -18,7 +18,7 @@ __Versão 0.1:__
 
 - App híbrido Android + HTML5
 
-- Layout baseado no material design
+- Layout baseado no Material Design
 
 - Consumo de web service RESTful
 
