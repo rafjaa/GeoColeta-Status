@@ -71,7 +71,7 @@ var valores_grafico = {'papel': 0, 'plastico': 0, 'metal_vidro': 0, 'organico': 
             // Oculta o ícone de carregar
             $('#update').fadeOut();
 
-            // Android.update();
+            Android.update();
         }
 
         load_data = function(){
