@@ -39,3 +39,71 @@ li a i{
 #loading{
     margin-top: 10px;
 }
+
+.card .card-content .card-title {
+    line-height: 32px;
+}
+
+/* Nav */
+nav .nav-container{
+    overflow: auto;
+    padding: 0 12px;
+}
+
+nav #slide-out{
+    line-height: 48px;
+}
+
+nav #slide-out li{
+    padding: 0;
+}
+
+nav #slide-out li:hover{
+    background-color: #f5f5f5;    
+}
+
+nav #slide-out a{
+    width: 100%;
+    padding: 0px 30px;
+}
+
+nav #slide-out .fa{
+    color: #333;
+    font-size: 26px;
+    position: relative;
+    top: 3px;
+    margin-right: 8px;
+}
+
+nav #slide-out .divisor{
+    border-top: 1px solid #ddd;
+}
+
+nav #slide-out .title{
+    font-size: 1rem;
+    color: #444;
+    padding: 0px 30px;
+    font-weight: 500;
+}
+
+nav #slide-out .brand:hover{
+    background-color: transparent;
+}
+
+nav #slide-out .brand a{
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+}
+
+nav #slide-out .brand a span{
+    font-weight: 400;
+}
+
+nav #slide-out .title:hover{
+    background: transparent;
+}
+
+nav a.button-collapse {
+  display: block !important;
+}

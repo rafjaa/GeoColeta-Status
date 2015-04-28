@@ -134,18 +134,18 @@ var valores_grafico = {'papel': 0, 'plastico': 0, 'metal_vidro': 0, 'organico': 
     });
 })(jQuery);
 
-$(document).on('swiperight','html', function(){
+// Swipe
+$(document).on('swiperight','.page-content', function(){
     if($('ul.tabs li a[href="#aba2"]').hasClass('active')) {
         $('ul.tabs').tabs('select_tab', 'aba1');
-        // $('#aba2').show().fadeOut(300);
-        //$('#aba1').hide().fadeIn(50);
     }; 
 });
 
-$(document).on('swipeleft','html', function(){
+$(document).on('swipeleft','.page-content', function(){
     if($('ul.tabs li a[href="#aba1"]').hasClass('active')) {
         $('ul.tabs').tabs('select_tab', 'aba2');
-        // $('#aba1').show().fadeOut(300);
-        //$('#aba2').hide().fadeIn(50);
     }
 });
+
+// Initialize collapse button
+$(".button-collapse").sideNav();

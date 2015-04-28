@@ -1,130 +1,134 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-
-    <link href="css/materialize.css?v=9" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-
-<body>
-    
-    <!-- Barra de navegação -->
-    <div class="navbar-fixed">
-        <nav class="green darken-1" role="navigation">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a id="logo-container" href="#" style="font-size: 20px; font-weight: bold;">
-                        GeoColeta <span style="font-weight: normal">Status</span>
-                    </a>
-                    <a id="update" href="#" class="right"><i class="mdi-navigation-refresh"></i></a>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <link href="css/materialize.css?v=9" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    </head>
+    <body>
+        <!-- <div class="navbar-fixed"> -->
+            <nav class="green darken-1" role="navigation">
+                <div class="nav-container">
+                    <ul id="slide-out" class="side-nav">
+                        <li class="brand"><a href="http://www.geocoleta.org/"><span>Geo</span>Coleta</a></li>
+                        <li class="divisor"></li>
+                        <li class="title">COMPARTILHAR</li>
+                        <li><a href="https://www.facebook.com/sharer.php?u=http://geocoleta.org" target="_blank"><i class="fa fa-facebook-square"></i> Facebook </a></li>
+                        <li><a href="https://twitter.com/intent/tweet?source=tweetbutton&amp;text=Estou contribuindo com o processo de coleta seletiva no IF Barbacena&amp;url=http://geocoleta.org" target="_blank"><i class="fa fa-twitter-square"></i> Twitter </a></li>
+                        <li><a href="https://plus.google.com/share?url=geocoleta.org" target="_blank"><i class="fa fa-google-plus-square"></i> Google+ </a></li>
+                        <li class="divisor"></li>
+                        <li><a href="http://www.barbacena.ifsudestemg.edu.br/conteudo/geocoleta" target="_blank"><i class="fa fa-info-circle"></i> Sobre o projeto </a></li>
+                    </ul>
+                    <div class="nav-wrapper">
+                        <a href="#" data-activates="slide-out" class="button-collapse">
+                            <i class="mdi-navigation-menu"></i>
+                            </a>
+                        <a id="logo-container" href="#" style="font-size: 20px; font-weight: bold; margin-left: 12px;">
+                            GeoColeta <span style="font-weight: normal">Status</span>
+                        </a>
+                        <a id="update" href="#" class="right"><i class="mdi-navigation-refresh"></i></a>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </div>    
+            </nav>
+        <!-- </div> -->
 
-    <!-- Abas -->
-    <div class="col s12">
-        <ul class="tabs z-depth-1">
-            <li class="tab col s3"><a style="color: #424242" class="active" href="#aba1"><i class="mdi-action-delete small"></i></a></li>
-            <li class="tab col s3"><a style="color: #424242" href="#aba2" onclick="window.setTimeout(grafico, 200)"><i class="mdi-action-assessment small"></i></a></li>
-        </ul>
-    </div>
-
-
-    <!-- Barra de atualização -->
-   <div id="loading" class="container">
-        <div class="progress">
-            <div class="indeterminate"></div>
+        <!-- Abas -->
+        <div class="col s12">
+            <ul class="tabs z-depth-1">
+                <li class="tab col s3"><a style="color: #424242" class="active" href="#aba1"><i class="mdi-action-delete small"></i></a></li>
+                <li class="tab col s3"><a style="color: #424242" href="#aba2" onclick="window.setTimeout(grafico, 200)"><i class="mdi-action-assessment small"></i></a></li>
+            </ul>
         </div>
-   </div>
 
-    <!-- Aba 1 -->
-    <div id="aba1" class="container">
-        <div class="card" style="margin-top: 15px">
-            <div class="card-content">
-                <div class="container center-align">
-                    <p class="card-title">
-                        <strong id="var_coletores">0</strong> coletores ativos
-                    </p>
-                </div>
-            </div>
-            <div class="card-action">     
-                <ul class="collection">
-                    <li class="collection-item avatar">
-                        <i class="mdi-action-assessment circle blue"></i>
-                        <span class="title">
-                            <strong>Papel</strong>
-                            <small>(<span id="var_papel_coletores">0</span> coletores)</small>
-                        </span>
-                        <p><span id="var_papel_descartes">0</span> descartes</p>
-                    </li>
-
-                    <li class="collection-item avatar">
-                        <i class="mdi-action-assessment circle red"></i>
-                        <span class="title">
-                            <strong>Plástico</strong>
-                            <small>(<span id="var_plastico_coletores">0</span> coletores)</small>
-                        </span>
-                        <p><span id="var_plastico_descartes">0</span> descartes</p>
-                    </li>
-
-                    <li class="collection-item avatar">
-                        <i class="mdi-action-assessment circle green"></i>
-                        <span class="title">
-                            <strong>Metal/Vidro</strong>
-                            <small>(<span id="var_metal_vidro_coletores">0</span> coletores)</small>
-                        </span>
-                        <p><span id="var_metal_vidro_descartes">0</span> descartes</p>
-                    </li>
-
-                    <li class="collection-item avatar">
-                        <i class="mdi-action-assessment circle brown"></i>
-                        <span class="title">
-                            <strong>Orgânico</strong>
-                            <small>(<span id="var_organico_coletores">0</span> coletores)</small>
-                        </span>
-                        <p><span id="var_organico_descartes">0</span> descartes</p>
-                    </li>
-
-                    <li class="collection-item avatar">
-                        <i class="mdi-action-assessment circle gray"></i>
-                        <span class="title">
-                            <strong>Não-reciclável</strong>
-                            <small>(<span id="var_nao_reciclavel_coletores">0</span> coletores)</small>
-                        </span>
-                        <p><span id="var_nao_reciclavel_descartes">0</span> descartes</p>
-                    </li>
-                </ul>
+        <!-- Barra de atualização -->
+        <div id="loading" class="container">
+            <div class="progress">
+                <div class="indeterminate"></div>
             </div>
         </div>
-    </div>
 
-    <!-- Aba 2 -->
-    <div id="aba2" class="container">
-         <div class="card" style="margin-top: 15px">
-            <div class="card-content">
-                <div class="container center-align">
-                    <p class="card-title">
-                        <strong id="var_descartes">0</strong> descartes
-                    </p>
+        <div class="page-content">
+            <!-- Aba 1 -->
+            <div id="aba1" class="container">
+                <div class="card" style="margin-top: 15px">
+                    <div class="card-content">
+                        <div class="container center-align">
+                            <p class="card-title">
+                                <strong id="var_coletores">0</strong> coletores ativos
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                                <i class="mdi-action-assessment circle blue"></i>
+                                <span class="title">
+                                <strong>Papel</strong>
+                                <small>(<span id="var_papel_coletores">0</span> coletores)</small>
+                                </span>
+                                <p><span id="var_papel_descartes">0</span> descartes</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="mdi-action-assessment circle red"></i>
+                                <span class="title">
+                                <strong>Plástico</strong>
+                                <small>(<span id="var_plastico_coletores">0</span> coletores)</small>
+                                </span>
+                                <p><span id="var_plastico_descartes">0</span> descartes</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="mdi-action-assessment circle green"></i>
+                                <span class="title">
+                                <strong>Metal/Vidro</strong>
+                                <small>(<span id="var_metal_vidro_coletores">0</span> coletores)</small>
+                                </span>
+                                <p><span id="var_metal_vidro_descartes">0</span> descartes</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="mdi-action-assessment circle brown"></i>
+                                <span class="title">
+                                <strong>Orgânico</strong>
+                                <small>(<span id="var_organico_coletores">0</span> coletores)</small>
+                                </span>
+                                <p><span id="var_organico_descartes">0</span> descartes</p>
+                            </li>
+                            <li class="collection-item avatar">
+                                <i class="mdi-action-assessment circle gray"></i>
+                                <span class="title">
+                                <strong>Não-reciclável</strong>
+                                <small>(<span id="var_nao_reciclavel_coletores">0</span> coletores)</small>
+                                </span>
+                                <p><span id="var_nao_reciclavel_descartes">0</span> descartes</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="card-action">
-                <div id="container"></div>
+
+            <!-- Aba 2 -->
+            <div id="aba2" class="container">
+                <div class="card" style="margin-top: 15px">
+                    <div class="card-content">
+                        <div class="container center-align">
+                            <p class="card-title">
+                                <strong id="var_descartes">0</strong> descartes
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <div id="container"></div>
+                    </div>
+                </div>
             </div>
-    </div>
-
-    <!--  Scripts-->
-    <script>
-
-    </script>
-
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/jquery.mobile.custom.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/highcharts.js"></script>
-    <script src="js/init.js"></script>
-</body>
+        </div>
+        
+        <!--  Scripts-->
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/jquery.mobile.custom.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/highcharts.js"></script>
+        <script src="js/init.js"></script>
+    </body>
 </html>
