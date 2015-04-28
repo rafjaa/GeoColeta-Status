@@ -3,6 +3,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+body{
+    padding-top: 56px;
+}
+
 .logo{
     font-size: 20px;
     margin-left: 12px;
@@ -60,6 +64,13 @@ li a i{
 }
 
 /* Nav */
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    overflow: visible;
+}
+
 nav .nav-container{
     overflow: auto;
     padding: 0 12px;
@@ -107,7 +118,7 @@ nav #slide-out .brand{
 }
 
 nav #slide-out .brand:hover{
-    background-color: transparent;
+    background-color: transparent; 
 }
 
 nav #slide-out .brand a{
@@ -129,4 +140,10 @@ nav #slide-out .title:hover{
 
 nav a.button-collapse {
   display: block !important;
+}
+
+@media (min-width: 600px){
+    body{
+        padding-top: 64px;
+    }
 }
