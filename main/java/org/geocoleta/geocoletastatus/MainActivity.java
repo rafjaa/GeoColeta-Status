@@ -55,9 +55,19 @@ public class MainActivity extends ActionBarActivity {
 
             // Faz com que links externos sejam abertos no app default do sistema
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
-                    view.getContext().startActivity(
-                            new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                if (url != null) {
+                    if (url.startsWith("http://") || url.startsWith("https://")) {
+                        view.getContext().startActivity(
+                                new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    } else if(url.startsWith("fb://")){
+
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.setType("text/plain");
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, "Estou contribuindo com o processo de coleta seletiva no IF Barbacena: http://geocoleta.org");
+                        startActivity(Intent.createChooser(shareIntent, "Compartilhar"));
+
+                    }
                     return true;
                 } else {
                     return false;
